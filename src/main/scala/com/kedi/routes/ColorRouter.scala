@@ -11,7 +11,7 @@ trait ColorRouter extends BaseRoute {
 
   val sampleRoute = basepath {
 
-    path("colors") {
+    path("something") {
       get {
         respondWithMediaType(`application/json`) {
           parameter('name, 'red?, 'green?, 'blue?) {

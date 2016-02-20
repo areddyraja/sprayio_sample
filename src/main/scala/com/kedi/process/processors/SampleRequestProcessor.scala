@@ -14,7 +14,7 @@ object SampleRequestProcessor {
     request match {
       case rq: SampleRequest       => rc.complete("OK")
       case rq: OneParameterRequest => rc.complete(rq.phoneNo)
-       case rq: TwoParameterRequest => rc.complete(rq.phoneNo + "," + rq.phoneNo)
+      case rq: TwoParameterRequest => rc.complete(rq.phoneNo + "," + rq.phoneNo)
     }
   }
   

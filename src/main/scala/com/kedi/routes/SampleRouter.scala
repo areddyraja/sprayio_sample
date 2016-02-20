@@ -7,6 +7,8 @@ import com.kedi.process.processors.SampleRequest
 import com.kedi.process.processors.OneParameterRequest
 import com.kedi.process.processors.TwoParameterRequest
 import com.kedi.process.processors.SampleRequest
+import com.kedi.process.processors.ColorRequest
+
 
 trait SampleRouter extends BaseRoute {
 
@@ -80,6 +82,18 @@ trait SampleRouter extends BaseRoute {
             parameter('name, 'phoneNo?) {
            (name, phoneNo) => ctx => rp ! (ctx, TwoParameterRequest(name, phoneNo.getOrElse("someno"))) 
            }
+        }
+      }
+    } ~
+      path("colors") {
+      get {
+        respondWithMediaType(`application/json`) {
+          parameter('name, 'red?, 'green?, 'blue?) {
+            (name, red, green, blue) =>
+              ctx => {
+                rp ! (ctx, ColorRequest(name, 0, 0, 0))
+              }
+          }
         }
       }
     }

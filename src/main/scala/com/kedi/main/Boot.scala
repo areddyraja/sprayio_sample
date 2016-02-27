@@ -11,6 +11,7 @@ import akka.pattern.ask
 import akka.util.Timeout
 import scala.concurrent.duration._
 import com.kedi.delegate.actors.RequestProcessingActor
+import com.kedi.data.dao.KundaDataSource
 
 object Boot extends App {
 
@@ -40,6 +41,6 @@ object Boot extends App {
   def actor(name: String) = actorMap.get(name)
 
   private def initServices = {
-
+    KundaDataSource.init()
   }
 }

@@ -25,7 +25,7 @@ trait BaseRoute extends HttpService {
   def basepath(route: Route) = compressResponseIfRequested() {
     addCorsHeaders(
       optionalCookie("KEDISESSIONID") { cookie ⇒
-        pathPrefix("kedi" / "api" / "v1") {
+        pathPrefix("kunda" / "api" / "v1") {
           route
         }
       })

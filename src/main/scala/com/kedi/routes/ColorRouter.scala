@@ -7,17 +7,22 @@ import com.kedi.common.utils.StringUtils._
 
 import spray.http.MediaTypes._
 trait ColorRouter extends BaseRoute {
-  val rp = Boot.actor("colorProcessor").get
+  // val rp = Boot.actor("  val rp = Boot.actor("requestprocessor").get").get
+  val rp2 = Boot.actor("requestprocessor").get
 
-  val sampleRoute = basepath {
+  val colorRoute = basepath {
 
     path("something") {
       get {
         respondWithMediaType(`application/json`) {
-          parameter('name, 'red?, 'green?, 'blue?) {
+          parameter('name, 'red.?, 'green.?, 'blue.?) {
             (name, red, green, blue) =>
               ctx => {
-                rp ! (ctx, ColorRequest(name, 0, 0, 0))
+                import com.kedi.common.utils.StringUtils.StringExtensions
+                val redone = 10; //red.getOrElse("10").toString.toIntOption.get
+                val greenone = green.getOrElse("10").toString.toIntOption.get
+                val blueone = blue.getOrElse("10").toString.toIntOption.get
+                rp2 ! (ctx, ColorRequest(name, 10, greenone, 100))
               }
           }
         }
@@ -26,5 +31,5 @@ trait ColorRouter extends BaseRoute {
 
   }
 
-  routes += sampleRoute
+  routes += colorRoute
 }

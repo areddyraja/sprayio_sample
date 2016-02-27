@@ -20,11 +20,12 @@ object MyJsonProtocol extends DefaultJsonProtocol {
 }
 
 object ColorRequestProcessor {
-  def process(rc: RequestContext, request: Request) = {
+  def process(rc: RequestContext, request: ColorRequest) = {
     request match {
       case rq: ColorRequest => {
         import MyJsonProtocol._
-        rc.complete(Color(rq.name, 0, 0, 0).toJson.toString())
+        println(rq.red + " " + rq.green + " " + rq.blue)
+        rc.complete(Color(rq.name, 10, 10, rq.blue).toJson.toString())
       }
     }
   }

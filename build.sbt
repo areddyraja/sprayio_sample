@@ -30,7 +30,10 @@ libraryDependencies ++= {
     "ch.qos.logback" % "logback-classic" % "1.1.3" withSources(),
     "com.eaio.uuid" % "uuid" % "3.2" withSources(),
     "org.apache.httpcomponents" % "httpclient" % "4.5.1" withSources(),
-    "org.scalatest" % "scalatest_2.11" % "3.0.0-M7" withSources()
+    "com.jolbox" % "bonecp" % "0.8.0.RELEASE" withSources(),
+  "com.typesafe.slick" % "slick_2.11" % "3.0.3" withSources(),
+  "org.postgresql" % "postgresql" % "9.4-1203-jdbc42" withSources(),
+  "org.scalatest" % "scalatest_2.11" % "3.0.0-M7" withSources()
   )
 }
 
